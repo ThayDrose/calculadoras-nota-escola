@@ -1,0 +1,106 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f4f8 0%, #c3d2e6 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+h1 {
+  color: #1a4a75;
+  margin-bottom: 5px;
+}
+
+p {
+  color: #667085;
+  margin-bottom: 25px;
+}
+
+.input-group,
+.nota-campo {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #344054;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.notas {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.nota-campo {
+  flex-basis: 30%;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.resultado-box {
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.aprovado {
+  background-color: #d1f7e0;
+  color: #0a7342;
+  border: 2px solid #0a7342;
+}
+
+.recuperacao {
+  background-color: #fff9e6;
+  color: #cc8400;
+  border: 2px solid #cc8400;
+}
+
+.reprovado {
+  background-color: #fcebeb;
+  color: #cc0000;
+  border: 2px solid #cc0000;
+}
