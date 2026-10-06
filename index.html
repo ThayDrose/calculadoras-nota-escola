@@ -2,78 +2,87 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KFBB0NWH23"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KFBB0NWH23');
-</script>
-    <title>Calculadora de Recuperação Anual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Descubra na hora se você passa direto ou quanto precisa tirar na recuperação." />
+    <meta name="theme-color" content="#0b0a1f" />
+    <title>Vou passar? Calculadora de média e recuperação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KFBB0NWH23"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-KFBB0NWH23");
+    </script>
   </head>
-  <body>
-    <div class="container">
-      <h1>📊 Verificação de Aprovação e Recuperação</h1>
-      <p>
-        Insira suas notas bimestrais e o nome da disciplina para calcular sua
-        situação.
-      </p>
+  <body data-status="idle">
+    <canvas id="confete" aria-hidden="true"></canvas>
 
-      <div class="input-group">
-        <label for="materia">Disciplina:</label>
-        <input type="text" id="materia" value="Ex: Matemática" required />
+    <main class="app">
+      <header>
+        <h1>Vou passar?</h1>
+        <p>Mexa nas notas e veja o resultado na hora.</p>
+      </header>
+
+      <div class="painel">
+        <section class="medidor" aria-live="polite">
+          <div class="ring">
+            <svg viewBox="0 0 160 160" aria-hidden="true">
+              <circle class="trilho" cx="80" cy="80" r="68" />
+              <circle id="arco" class="arco" cx="80" cy="80" r="68" />
+              <g transform="rotate(252 80 80)"><line class="marca" x1="80" y1="2" x2="80" y2="18" /></g>
+            </svg>
+            <div class="centro">
+              <span id="media" class="media">–</span>
+              <span class="rotulo">média anual</span>
+            </div>
+          </div>
+          <h2 id="titulo">Digite suas notas</h2>
+          <p id="texto">O medidor mostra sua média. A linha marca o 7, nota para passar direto.</p>
+        </section>
+
+        <form id="form" novalidate>
+          <div class="field">
+            <label for="materia">Disciplina</label>
+            <input id="materia" type="text" maxlength="40" placeholder="Ex.: Matemática" autocomplete="off" />
+          </div>
+
+          <div class="tile">
+            <div class="tile-topo">
+              <label for="nota1">1º bimestre</label>
+              <input id="nota1" class="nota" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" />
+            </div>
+            <input class="slider" type="range" min="0" max="10" step="0.1" value="0" aria-label="1º bimestre, controle deslizante" data-alvo="nota1" />
+          </div>
+          <div class="tile">
+            <div class="tile-topo">
+              <label for="nota2">2º bimestre</label>
+              <input id="nota2" class="nota" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" />
+            </div>
+            <input class="slider" type="range" min="0" max="10" step="0.1" value="0" aria-label="2º bimestre, controle deslizante" data-alvo="nota2" />
+          </div>
+          <div class="tile">
+            <div class="tile-topo">
+              <label for="nota3">3º bimestre</label>
+              <input id="nota3" class="nota" type="text" inputmode="decimal" placeholder="0,0" autocomplete="off" />
+            </div>
+            <input class="slider" type="range" min="0" max="10" step="0.1" value="0" aria-label="3º bimestre, controle deslizante" data-alvo="nota3" />
+          </div>
+
+          <button type="button" id="limpar">Limpar notas</button>
+        </form>
       </div>
 
-      <div class="notas">
-        <h3>Notas Bimestrais (0 a 10)</h3>
-        <div class="nota-campo">
-          <label for="nota1">1º Bimestre:</label>
-          <input
-            type="number"
-            id="nota1"
-            min="0"
-            max="10"
-            step="0.1"
-            value="7.0"
-            required
-          />
-        </div>
-        <div class="nota-campo">
-          <label for="nota2">2º Bimestre:</label>
-          <input
-            type="number"
-            id="nota2"
-            min="0"
-            max="10"
-            step="0.1"
-            value="7.0"
-            required
-          />
-        </div>
-        <div class="nota-campo">
-          <label for="nota3">3º Bimestre:</label>
-          <input
-            type="number"
-            id="nota3"
-            min="0"
-            max="10"
-            step="0.1"
-            value="7.0"
-            required
-          />
-        </div>
-      </div>
-
-      <button onclick="calcularRecuperacao()">Calcular Situação</button>
-
-      <div id="resultado" class="resultado-box">Aguardando notas...</div>
-    </div>
-
+      <footer>
+        <p id="regra"></p>
+        <p class="credito">Desenvolvido por <strong>Thayane Dröse</strong></p>
+      </footer>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
-
