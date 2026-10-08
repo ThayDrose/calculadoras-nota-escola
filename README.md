@@ -62,8 +62,8 @@ Os três arquivos devem ficar **na mesma pasta**.
 **Localmente:** baixe ou clone o repositório e abra o `index.html` no navegador (ou use a extensão Live Server do VS Code).
 
 ```bash
-git clone https://github.com/ThayDrose/NOME-DO-REPOSITORIO.git
-cd NOME-DO-REPOSITORIO
+git clone https://github.com/ThayDrose/calculadoras-nota-escola.git
+cd calculadoras-nota-escola
 ```
 
 **No GitHub Pages:** em *Settings → Pages*, escolha *Deploy from a branch*, selecione a branch `main` e a pasta `/ (root)`.
