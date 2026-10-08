@@ -2,7 +2,7 @@
 
 Calculadora web que mostra, em tempo real, se o aluno está **aprovado direto**, em **recuperação** ou em situação crítica, e informa a **nota mínima necessária na prova de recuperação**. Criada para uso na escola, com foco em clareza, acessibilidade e boa experiência no celular.
 
-🔗 **Demo:** https://thaydrose.github.io/NOME-DO-REPOSITORIO/
+🔗 **Demo:** https://thaydrose.github.io/calculadoras-nota-escola/
 
 ---
 
